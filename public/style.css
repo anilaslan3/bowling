@@ -1,38 +1,85 @@
+/* Sayfanın tamamını kapla ve kaydırmayı engelle */
 body {
     margin: 0;
     overflow: hidden;
-    font-family: sans-serif;
+    font-family: Arial, sans-serif;
+    background-color: #222;
 }
 
-#info {
+/* Three.js canvas'ı arka planı kaplasın */
+#game-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+/* Arayüz elemanlarını en üste yerleştir */
+#ui-container {
     position: absolute;
-    top: 10px;
+    top: 0;
+    left: 0;
     width: 100%;
-    text-align: center;
-    z-index: 100;
+    height: 100%;
     color: white;
+    pointer-events: none; /* UI'ın arkasındaki sahneyle etkileşimi engelleme */
 }
 
-#game-container {
-    width: 100vw;
-    height: 100vh;
+/* Bilgi metinleri */
+#info-text {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 8px;
 }
 
+/* Skor tablosu */
+#scoreboard {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+/* Güç barı dış çerçevesi */
 #power-bar-container {
     position: absolute;
-    left: 20px;
     bottom: 20px;
-    width: 20px;
+    left: 20px;
+    width: 25px;
     height: 200px;
-    border: 2px solid white;
     background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid white;
+    border-radius: 5px;
     display: none; /* Başlangıçta gizli */
 }
 
+/* Güç barının içi (hareket eden kısım) */
 #power-bar {
-    width: 100%;
-    height: 0%;
-    background-color: red;
     position: absolute;
     bottom: 0;
+    width: 100%;
+    height: 0%; /* Yüksekliği JavaScript ile değiştirilecek */
+    background-color: red;
+    transition: background-color 0.2s;
+}
+
+/* Reset butonu */
+#reset-button {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 30px;
+    font-size: 1.2em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    pointer-events: all; /* Butonun tıklanabilir olması için */
 }

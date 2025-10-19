@@ -1,28 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Bowling</title>
+    <title>3D Web Bowling - Online</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="info">
-        <h1>Online Bowling Oyunu</h1>
-        <p id="status">Topu yerleştirmek için fareyi hareket ettir, fırlatmak için tıkla ve basılı tut.</p>
-        <button id="resetButton" style="display: none;">Lobutları Sıfırla</button>
+    <canvas id="game-canvas"></canvas>
+    <div id="ui-container">
+        <div id="info-text"><p>Sunucuya bağlanılıyor...</p></div>
+        <div id="scoreboard">SKOR: 0</div>
+        <div id="power-bar-container" style="display: none;"><div id="power-bar"></div></div>
+        <button id="reset-button" style="display: none;">Yeni Tur</button>
     </div>
-
-    <div id="power-bar-container">
-        <div id="power-bar"></div>
-    </div>
-    
-    <div id="game-container"></div>
-
     <script src="/socket.io/socket.io.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    
-    <script src="https://threejs.org/examples/js/libs/ammo.wasm.js"></script>
-    <script src="client.js"></script>
+    <script type="importmap">
+    { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js", "cannon-es": "https://unpkg.com/cannon-es@0.20.0/dist/cannon-es.js" } }
+    </script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
